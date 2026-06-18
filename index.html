@@ -124,54 +124,40 @@
   }
   .m-hero .kicker { margin-bottom: 16px; }
 
-  /* Live countdown pill — replaces the rating block above the h1 */
+  /* Newspaper-style eyebrow countdown — small uppercase label, no pill */
   .m-countdown {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    padding: 7px 14px 7px 12px;
-    border-radius: 999px;
-    background: var(--bg-alt);
-    border: 1px solid var(--line);
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--ink-2);
-    margin: 0 0 24px;
-    letter-spacing: 0;
+    margin: 0 0 18px;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--ink-3);
   }
   .m-countdown-dot {
     display: inline-block;
-    width: 8px; height: 8px;
+    width: 7px; height: 7px;
     border-radius: 50%;
     background: var(--accent);
     flex-shrink: 0;
-    box-shadow: 0 0 0 0 rgba(255, 68, 4, 0.6);
+    box-shadow: 0 0 0 0 rgba(255, 68, 4, 0.55);
     animation: m-countdown-pulse 2s ease-out infinite;
   }
   @keyframes m-countdown-pulse {
     0%   { box-shadow: 0 0 0 0 rgba(255, 68, 4, 0.55); }
-    70%  { box-shadow: 0 0 0 9px rgba(255, 68, 4, 0); }
+    70%  { box-shadow: 0 0 0 8px rgba(255, 68, 4, 0); }
     100% { box-shadow: 0 0 0 0 rgba(255, 68, 4, 0); }
   }
   .m-countdown-text { white-space: nowrap; }
-  .m-countdown.is-live {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: #fff;
-  }
-  .m-countdown.is-live .m-countdown-dot {
-    background: #fff;
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.55);
-    animation-name: m-countdown-pulse-live;
-  }
-  @keyframes m-countdown-pulse-live {
-    0%   { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.55); }
-    70%  { box-shadow: 0 0 0 9px rgba(255, 255, 255, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
-  }
+  .m-countdown.is-live { color: var(--accent); }
   @media (prefers-reduced-motion: reduce) {
-    .m-countdown-dot { animation: none; box-shadow: 0 0 0 3px rgba(255, 68, 4, 0.18); }
-    .m-countdown.is-live .m-countdown-dot { box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.4); }
+    .m-countdown-dot { animation: none; box-shadow: 0 0 0 3px rgba(255, 68, 4, 0.2); }
   }
 
   /* Rating block — verbatim from shipping landing */
@@ -232,22 +218,31 @@
     font-weight: 600;
   }
   .m-hero h1 {
-    font-family: var(--font-sans);
-    font-size: clamp(34px, 9vw, 56px);
-    line-height: 1.06;
-    letter-spacing: -0.035em;
-    font-weight: 500;
+    font-family: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-size: clamp(40px, 11vw, 64px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    font-weight: 400;
     color: var(--ink);
-    margin: 0 0 20px;
+    margin: 0 0 22px;
   }
   .m-hero p.lead {
-    font-size: 17px;
-    line-height: 1.55;
-    color: var(--ink-3);
+    font-family: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+    font-style: normal;
+    font-size: clamp(19px, 5vw, 22px);
+    line-height: 1.4;
+    color: var(--ink-2);
     margin: 0 0 28px;
-    max-width: 520px;
+    max-width: 560px;
+    font-weight: 400;
   }
-  .m-hero p.lead strong { color: var(--ink); font-weight: 600; }
+  .m-hero p.lead strong {
+    font-family: var(--font-sans);
+    color: var(--ink);
+    font-weight: 600;
+    font-style: normal;
+  }
   .m-hero .btn {
     display: flex;
     width: 100%;
@@ -437,8 +432,8 @@
       flex-direction: column;
       align-items: center;
     }
-    .m-hero h1 { font-size: clamp(48px, 6.5vw, 64px); max-width: 100%; }
-    .m-hero .lead { font-size: 18px; max-width: 620px; margin: 0; }
+    .m-hero h1 { font-size: clamp(56px, 8vw, 80px); max-width: 100%; }
+    .m-hero .lead { font-size: clamp(20px, 2.2vw, 24px); max-width: 640px; margin: 0; }
     .m-rating { justify-content: center; }
     .m-hero .btn {
       width: auto;
@@ -460,8 +455,8 @@
 
   @media (min-width: 1024px) {
     .m-hero { padding: 80px 40px 32px; max-width: 1020px; }
-    .m-hero h1 { font-size: 68px; }
-    .m-hero .lead { font-size: 19px; max-width: 700px; }
+    .m-hero h1 { font-size: 88px; }
+    .m-hero .lead { font-size: 24px; max-width: 720px; }
     .m-hero-art { padding: 32px 40px 0; }
     .m-hero-video { max-width: 880px; }
   }
