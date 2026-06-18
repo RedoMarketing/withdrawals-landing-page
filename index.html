@@ -120,23 +120,64 @@
   .m-hero {
     padding: 40px 24px 32px;
   }
-  .m-hero .m-kicker {
+  .m-hero .kicker { margin-bottom: 16px; }
+
+  /* Rating block — verbatim from shipping landing */
+  .m-rating {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
     margin: 0 0 24px;
+  }
+  .m-avatars {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .m-avatar {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: 2px solid var(--bg);
+    object-fit: cover;
+    margin-left: -10px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.08);
+    background: var(--bg-alt);
+    display: block;
+  }
+  .m-avatar:first-child { margin-left: 0; }
+  .m-rating-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+  .m-rating-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .m-rating-stars { display: inline-flex; gap: 1px; color: var(--accent); }
+  .m-rating-stars svg { display: block; }
+  .m-rating-score {
     font-size: 13px;
-    font-weight: 500;
-    color: var(--ink-2);
+    font-weight: 600;
+    color: var(--ink);
     letter-spacing: -0.005em;
   }
-  .m-hero .m-kicker .dot {
-    display: inline-block;
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    background: var(--accent);
-    flex-shrink: 0;
-    box-shadow: 0 0 0 3px rgba(255, 68, 4, 0.14);
+  .m-rating-score.muted {
+    color: var(--ink-3);
+    font-weight: 500;
+    margin-left: 2px;
+  }
+  .m-rating-sub {
+    font-size: 12px;
+    color: var(--ink-3);
+    font-weight: 500;
+    letter-spacing: -0.005em;
+  }
+  .m-rating-sub strong {
+    color: var(--ink-2);
+    font-weight: 600;
   }
   .m-hero h1 {
     font-family: var(--font-sans);
@@ -214,6 +255,7 @@
     }
     .m-hero h1 { font-size: clamp(48px, 6.5vw, 64px); max-width: 100%; }
     .m-hero .lead { font-size: 18px; max-width: 620px; margin: 0; }
+    .m-rating { justify-content: center; }
     .m-hero .btn {
       width: auto;
       min-width: 280px;
@@ -570,13 +612,32 @@
 <main>
 
   <section class="m-hero">
-    <p class="m-kicker"><span class="dot"></span>EU Right of Withdrawal · Effective June 19, 2026</p>
+    <div class="m-rating" role="img" aria-label="4.9 stars on Shopify, loved by 3,000 plus brands">
+      <div class="m-avatars" aria-hidden="true">
+        <img class="m-avatar" src="logos/founders/f1.png" alt="" loading="lazy" />
+        <img class="m-avatar" src="logos/founders/f3.png" alt="" loading="lazy" />
+        <img class="m-avatar" src="logos/founders/f2.png" alt="" loading="lazy" />
+        <img class="m-avatar" src="logos/founders/f6.png" alt="" loading="lazy" />
+        <img class="m-avatar" src="logos/founders/f5.png" alt="" loading="lazy" />
+      </div>
+      <div class="m-rating-stack">
+        <div class="m-rating-row">
+          <span class="m-rating-score">4.9</span>
+          <span class="m-rating-stars" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </span>
+          <span class="m-rating-score muted">on Shopify</span>
+        </div>
+        <span class="m-rating-sub">Loved by <strong>3,000+</strong> brands</span>
+      </div>
+    </div>
     <h1>Don't get fined 4% of your revenue.</h1>
     <p class="lead">The EU now requires every brand selling into Europe to offer a digital withdrawal option. We turn it on for you in <strong>10 minutes</strong>. Free.</p>
     <a href="https://app.redo.com/signup" class="btn btn-primary btn-lg">Get compliant →</a>
     <ul class="m-checks">
-      <li>Free with Redo Returns</li>
-      <li>No engineering needed</li>
+      <li>No credit card required</li>
+      <li>Cancel anytime</li>
+      <li>Set up in minutes</li>
     </ul>
   </section>
 
