@@ -406,16 +406,16 @@
       firstname: { objectTypeId: '0-1', hsName: 'firstname' },
       lastname:  { objectTypeId: '0-1', hsName: 'lastname' },
       email:     { objectTypeId: '0-1', hsName: 'email' },
-      website:   { objectTypeId: '0-1', hsName: 'website' },
+      website:   { objectTypeId: '0-2', hsName: 'domain' },
       orders:    { objectTypeId: '0-2', hsName: 'orders_last_year' }
     };
 
     // Every submission from this page is for the EU Right of Withdrawal
     // product, so the "Which offering" field is hidden and the value is
     // sent as a fixed payload field. Drives HubSpot's routing logic for
-    // this product.
+    // this product. interested_product is a Company (0-2) field.
     var FIXED_FIELDS = [
-      { objectTypeId: '0-1', name: 'product_interest', value: 'Withdrawals' }
+      { objectTypeId: '0-2', name: 'interested_product', value: 'Withdrawals' }
     ];
 
     var submit     = wrap.querySelector('[data-rd="submit"]');
