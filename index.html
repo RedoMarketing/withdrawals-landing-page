@@ -37,6 +37,38 @@
   .w-nav-spacer { flex: 1; }
   .w-nav .btn-sm { padding: 0 16px; height: 40px; font-size: 13px; }
 
+  /* ===== Video hero (first thing visible) ===== */
+  .w-video {
+    padding: 24px 20px 0;
+    background: var(--bg);
+  }
+  .w-video-wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    background: #000;
+    box-shadow:
+      0 1px 2px rgba(20,20,19,.04),
+      0 8px 24px -6px rgba(20,20,19,.16),
+      0 24px 48px -12px rgba(20,20,19,.18);
+  }
+  .w-video-wrap iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    border: 0;
+  }
+  @media (min-width: 720px) {
+    .w-video { padding: 48px 32px 0; }
+  }
+  @media (min-width: 1024px) {
+    .w-video { padding: 56px 40px 8px; }
+    .w-video-wrap { max-width: 1080px; }
+  }
+
   /* ===== Hero ===== */
   .w-hero {
     padding: 40px 24px 32px;
@@ -598,6 +630,20 @@
 </header>
 
 <main>
+
+  <!-- =========================================================
+       VIDEO (first thing visible)
+       ========================================================= -->
+  <section class="w-video">
+    <div class="w-video-wrap">
+      <iframe
+        src="https://player.vimeo.com/video/1202351057?autoplay=1&muted=1&playsinline=1&title=0&byline=0&portrait=0"
+        title="EU Right of Withdrawal — what every brand needs to know"
+        allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+        allowfullscreen
+        frameborder="0"></iframe>
+    </div>
+  </section>
 
   <!-- =========================================================
        HERO
