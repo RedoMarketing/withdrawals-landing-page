@@ -218,7 +218,32 @@
     background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='none' stroke='%23ff4404' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' d='M5 12l4.5 4.5L19 7'/></svg>") center / 12px no-repeat;
   }
 
-  /* Hero "product" slot — now hosts the Vimeo video */
+  /* Video sits in its own section, just under the hero */
+  .m-video-section {
+    padding: 16px 20px 40px;
+    text-align: center;
+    max-width: 1020px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .m-video-section-kicker {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 16px;
+  }
+  @media (min-width: 720px) {
+    .m-video-section { padding: 24px 32px 48px; }
+  }
+  @media (min-width: 1024px) {
+    .m-video-section { padding: 32px 40px 64px; }
+  }
+
+  /* Legacy m-hero-art wrapper (kept for fallback compatibility) */
   .m-hero-art {
     padding: 16px 20px 0;
     position: relative;
@@ -244,11 +269,34 @@
     border: 0;
     display: block;
   }
+  .m-hero-video-click {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    padding: 0;
+  }
+  .m-hero-video-play {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    display: none;
+    place-items: center;
+    pointer-events: none;
+  }
+  .m-hero-video[data-paused="true"] .m-hero-video-play { display: grid; }
+  .m-hero-video-play svg {
+    width: 56px; height: 56px;
+    color: rgba(255, 255, 255, 0.96);
+    filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.5));
+  }
   .m-hero-video-unmute {
     position: absolute;
     top: 12px;
     right: 12px;
-    z-index: 3;
+    z-index: 5;
     width: 36px; height: 36px;
     border-radius: 999px;
     border: 0;
@@ -667,14 +715,21 @@
     </ul>
   </section>
 
-  <div class="m-hero-art">
-    <div class="m-hero-video">
+  <section class="m-video-section">
+    <p class="m-video-section-kicker">Learn more</p>
+    <div class="m-hero-video" data-paused="false">
       <iframe
         src="https://player.vimeo.com/video/1202351057?autoplay=1&muted=1&playsinline=1&title=0&byline=0&portrait=0&controls=0"
         title="EU Right of Withdrawal: what every brand needs to know"
         allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
         allowfullscreen
         frameborder="0"></iframe>
+      <button type="button" class="m-hero-video-click" aria-label="Play or pause video"></button>
+      <div class="m-hero-video-play" aria-hidden="true">
+        <svg width="56" height="56" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <polygon points="6 4 20 12 6 20 6 4"/>
+        </svg>
+      </div>
       <button type="button" class="m-hero-video-unmute" data-muted="true" aria-label="Unmute video">
         <svg class="icon-muted" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
@@ -688,7 +743,7 @@
         </svg>
       </button>
     </div>
-  </div>
+  </section>
 
   <article class="article">
 
@@ -772,31 +827,47 @@
 <script>
 (function () {
   var iframe = document.querySelector('.m-hero-video iframe');
-  var button = document.querySelector('.m-hero-video-unmute');
-  if (!iframe || !button || !window.Vimeo) return;
+  var videoBox = document.querySelector('.m-hero-video');
+  var muteBtn = document.querySelector('.m-hero-video-unmute');
+  var clickBtn = document.querySelector('.m-hero-video-click');
+  if (!iframe || !videoBox || !muteBtn || !clickBtn || !window.Vimeo) return;
 
   var player = new Vimeo.Player(iframe);
-  var muted = true;
 
-  function syncUi(isMuted) {
-    muted = !!isMuted;
-    button.dataset.muted = muted ? 'true' : 'false';
-    button.setAttribute('aria-label', muted ? 'Unmute video' : 'Mute video');
+  function setMutedUi(muted) {
+    muteBtn.dataset.muted = muted ? 'true' : 'false';
+    muteBtn.setAttribute('aria-label', muted ? 'Unmute video' : 'Mute video');
   }
+  function setPausedUi(paused) {
+    videoBox.dataset.paused = paused ? 'true' : 'false';
+    clickBtn.setAttribute('aria-label', paused ? 'Play video' : 'Pause video');
+  }
+
+  // Fire mute/pause toggles SYNCHRONOUSLY inside the click handler so the
+  // browser still considers it a user gesture (otherwise autoplay-muted
+  // policies will reject the first unmute).
+  muteBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var wasMuted = muteBtn.dataset.muted === 'true';
+    player.setMuted(!wasMuted).catch(function () {});
+  });
+  clickBtn.addEventListener('click', function () {
+    var isPaused = videoBox.dataset.paused === 'true';
+    if (isPaused) player.play().catch(function () {});
+    else player.pause().catch(function () {});
+  });
+
+  // Sync our UI from the player's actual state.
+  player.on('volumechange', function () {
+    player.getMuted().then(setMutedUi).catch(function () {});
+  });
+  player.on('play', function () { setPausedUi(false); });
+  player.on('pause', function () { setPausedUi(true); });
 
   player.ready().then(function () {
     player.disableTextTrack().catch(function () {});
-    player.getMuted().then(syncUi).catch(function () {});
-  });
-
-  button.addEventListener('click', function () {
-    player.setMuted(!muted).then(function () {
-      syncUi(!muted);
-    }).catch(function () {});
-  });
-
-  player.on('volumechange', function () {
-    player.getMuted().then(syncUi).catch(function () {});
+    player.getMuted().then(setMutedUi).catch(function () {});
+    player.getPaused().then(setPausedUi).catch(function () {});
   });
 })();
 </script>
