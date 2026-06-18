@@ -4,18 +4,18 @@
 <meta charset="UTF-8" />
 <meta name="color-scheme" content="light only" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Get EU-compliant in 10 minutes — Redo</title>
-<meta name="description" content="The EU Right of Withdrawal Directive takes effect June 19, 2026. Non-compliance can cost up to 4% of annual turnover. Get compliant in 10 minutes with Redo — free." />
+<title>Get EU-compliant in 10 minutes · Redo</title>
+<meta name="description" content="The EU Right of Withdrawal Directive takes effect June 19, 2026. Non-compliance can cost up to 4% of annual turnover. Get compliant in 10 minutes with Redo. Free." />
 <link rel="icon" type="image/svg+xml" href="logos/redo-logo.svg" />
-<meta property="og:title" content="Get EU-compliant in 10 minutes — Redo" />
-<meta property="og:description" content="The EU Right of Withdrawal Directive takes effect June 19, 2026. Get compliant in 10 minutes — free." />
+<meta property="og:title" content="Get EU-compliant in 10 minutes · Redo" />
+<meta property="og:description" content="The EU Right of Withdrawal Directive takes effect June 19, 2026. Get compliant in 10 minutes. Free." />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Get EU-compliant in 10 minutes — Redo" />
+<meta name="twitter:title" content="Get EU-compliant in 10 minutes · Redo" />
 <meta name="twitter:description" content="EU Right of Withdrawal Directive takes effect June 19, 2026." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css?v=w-3" />
 <style>
   :root {
@@ -132,29 +132,42 @@
     padding: 48px 0 16px;
   }
   .w-hero-eyebrow {
-    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px 7px 12px;
+    border-radius: 999px;
+    background: var(--bg-alt);
+    border: 1px solid var(--line);
+    font-size: 12px;
     font-weight: 500;
-    color: var(--ink-3);
-    margin: 0 0 16px;
-    letter-spacing: -0.005em;
+    color: var(--ink-2);
+    margin: 0 0 20px;
+    letter-spacing: 0;
   }
   .w-hero-eyebrow .dot {
     display: inline-block;
     width: 6px; height: 6px;
     border-radius: 50%;
     background: var(--accent);
-    margin-right: 8px;
-    vertical-align: middle;
-    margin-bottom: 2px;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 3px rgba(255, 68, 4, 0.14);
   }
   .w-hero h1 {
     font-family: var(--font-sans);
-    font-size: clamp(32px, 6vw, 44px);
-    line-height: 1.1;
-    letter-spacing: -0.025em;
+    font-size: clamp(34px, 6vw, 48px);
+    line-height: 1.05;
+    letter-spacing: -0.028em;
     font-weight: 600;
     color: var(--ink);
-    margin: 0 0 16px;
+    margin: 0 0 18px;
+  }
+  .w-hero h1 em {
+    font-family: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+    letter-spacing: -0.01em;
   }
   .w-hero .lead {
     font-size: 17px;
@@ -180,19 +193,45 @@
   }
   .w-q:first-child { border-top: 0; }
   .w-q-num {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 14px;
+  }
+  .w-q-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+    padding: 0 10px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    line-height: 1;
+  }
+  .w-q-label {
     font-size: 13px;
     font-weight: 600;
-    color: var(--accent);
-    margin: 0 0 12px;
-    letter-spacing: 0.04em;
+    color: var(--ink-2);
+    letter-spacing: 0;
   }
   .w-q h2 {
-    font-size: clamp(22px, 4vw, 26px);
-    line-height: 1.25;
-    letter-spacing: -0.015em;
+    font-size: clamp(22px, 4vw, 28px);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
     font-weight: 600;
     color: var(--ink);
     margin: 0 0 14px;
+  }
+  .w-q h2 em {
+    font-family: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+    letter-spacing: -0.01em;
   }
   .w-q p {
     font-size: 16px;
@@ -230,6 +269,49 @@
     background-repeat: no-repeat;
     background-position: center;
   }
+
+  /* Checklist card — wraps a w-q-list in a soft bg container */
+  .w-checklist-card {
+    margin: 18px 0 0;
+    padding: 6px 24px;
+    background: var(--bg-alt);
+    border-radius: var(--r-md);
+    border: 1px solid var(--line-2);
+  }
+  .w-checklist-card .w-q-list { margin: 0; }
+  .w-checklist-card .w-q-list li {
+    border-color: rgba(0,0,0,0.05);
+    padding: 12px 0 12px 28px;
+  }
+  .w-checklist-card .w-q-list li::before { top: 18px; }
+
+  /* Stat callout — big italic number + supporting text */
+  .w-stat-callout {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin: 18px 0 0;
+    padding: 20px 26px;
+    background: linear-gradient(135deg, rgba(255,68,4,0.07) 0%, rgba(255,68,4,0.02) 100%);
+    border: 1px solid rgba(255,68,4,0.18);
+    border-radius: var(--r-md);
+  }
+  .w-stat-num {
+    font-family: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 68px;
+    line-height: 0.85;
+    color: var(--accent);
+    flex-shrink: 0;
+    letter-spacing: -0.02em;
+  }
+  .w-stat-text {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink-2);
+  }
+  .w-stat-text strong { color: var(--ink); font-weight: 600; }
 
   /* CTA inline — minimal, no dark slab */
   .w-cta-inline {
@@ -356,38 +438,44 @@
     <div class="w-content">
 
       <section class="w-q">
-        <p class="w-q-num">01 · What it is</p>
+        <p class="w-q-num"><span class="w-q-badge">01</span><span class="w-q-label">What it is</span></p>
         <h2>A new EU directive that's mandatory on June 19, 2026.</h2>
-        <p>Directive (EU) 2023/2673 — the Right of Withdrawal — requires every ecommerce business selling into the EU to offer a clear, easily-found digital withdrawal option. It's separate from your normal returns flow and the rules are stricter.</p>
+        <p>Directive (EU) 2023/2673, the Right of Withdrawal, requires every ecommerce business selling into the EU to offer a clear, easily-found digital withdrawal option. It's separate from your normal returns flow and the rules are stricter.</p>
       </section>
 
       <section class="w-q">
-        <p class="w-q-num">02 · Who it affects</p>
+        <p class="w-q-num"><span class="w-q-badge">02</span><span class="w-q-label">Who it affects</span></p>
         <h2>Any brand that ships to an EU address.</h2>
-        <p>It applies based on the customer's location, not where your company is based. US, UK, Australia, anywhere — if you ship into the EU, you're in scope. Even one EU shipment triggers it.</p>
+        <p>It applies based on the customer's location, not where your company is based. US, UK, Australia, anywhere. If you ship into the EU, you're in scope. Even one EU shipment triggers it.</p>
       </section>
 
       <section class="w-q">
-        <p class="w-q-num">03 · What it requires</p>
+        <p class="w-q-num"><span class="w-q-badge">03</span><span class="w-q-label">What it requires</span></p>
         <h2>Six specific things, all mandatory.</h2>
-        <ul class="w-q-list">
-          <li>A dedicated digital withdrawal flow, separate from regular returns</li>
-          <li>14-day withdrawal window from the delivery date</li>
-          <li>Two-step confirmation with an automatic email</li>
-          <li>Refund within 14 days to the original payment method</li>
-          <li>Refund shipping, duties, and taxes — not just the product</li>
-          <li>No forced account creation for guest checkouts</li>
-        </ul>
+        <div class="w-checklist-card">
+          <ul class="w-q-list">
+            <li>A dedicated digital withdrawal flow, separate from regular returns</li>
+            <li>14-day withdrawal window from the delivery date</li>
+            <li>Two-step confirmation with an automatic email</li>
+            <li>Refund within 14 days to the original payment method</li>
+            <li>Refund shipping, duties, and taxes, not just the product</li>
+            <li>No forced account creation for guest checkouts</li>
+          </ul>
+        </div>
       </section>
 
       <section class="w-q">
-        <p class="w-q-num">04 · The penalty</p>
-        <h2>Up to 4% of your annual turnover.</h2>
-        <p>Enforcement is by each EU member state's consumer protection authority. Penalties vary by country, but the ceiling is the same everywhere — and there's no grace period after June 19.</p>
+        <p class="w-q-num"><span class="w-q-badge">04</span><span class="w-q-label">The penalty</span></p>
+        <h2>Up to <em>4%</em> of your annual turnover.</h2>
+        <p>Enforcement is by each EU member state's consumer protection authority. Penalties vary by country, but the ceiling stays the same everywhere.</p>
+        <div class="w-stat-callout">
+          <div class="w-stat-num">4%</div>
+          <div class="w-stat-text"><strong>That's the cap on every fine.</strong> No warning period. No grace window after June 19, 2026.</div>
+        </div>
       </section>
 
       <section class="w-q">
-        <p class="w-q-num">05 · How Redo handles it</p>
+        <p class="w-q-num"><span class="w-q-badge">05</span><span class="w-q-label">How Redo handles it</span></p>
         <h2>Automatically. For every EU order. Free.</h2>
         <p>Redo auto-detects EU shipments, enforces the 14-day window, generates the prepaid return labels, processes refunds through Shopify (including shipping, duties, and taxes), and keeps the whole flow separate from your regular returns. You install Redo, toggle on the EU withdrawal flow, and you're compliant.</p>
         <div class="w-cta-inline">
