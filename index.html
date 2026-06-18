@@ -310,131 +310,36 @@
     .w-strip-cap { text-align: left; }
   }
 
-  /* Comparison list — Requirement → Redo handles it */
-  .w-compare {
-    padding: 0 20px 72px;
+  /* Requirements — tight bulleted list */
+  .w-reqs {
+    padding: 16px 20px 80px;
   }
-  .w-compare-list {
-    max-width: 920px;
+  .w-reqs-list {
+    list-style: none;
+    padding: 0;
     margin: 0 auto;
-    border-top: 1px solid var(--line-2);
+    max-width: 620px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
-  .w-compare-row {
-    border-bottom: 1px solid var(--line-2);
-    padding: 24px 0;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-  .w-compare-num {
-    font-family: var(--font-serif), Georgia, serif;
-    font-size: 18px;
-    color: var(--ink-3);
-    margin: 0 0 4px;
-    font-weight: 400;
-  }
-  .w-compare-law h3 {
-    font-size: 17px;
-    font-weight: 600;
-    color: var(--ink);
-    letter-spacing: -0.012em;
-    margin: 0 0 6px;
-  }
-  .w-compare-law > p {
-    font-size: 14px;
-    color: var(--ink-3);
-    line-height: 1.5;
-    margin: 0;
-    max-width: 460px;
-  }
-  .w-compare-redo {
-    background: var(--bg-alt);
-    border-radius: var(--r-md);
-    padding: 14px 16px;
-  }
-  .w-compare-redo-label {
-    display: inline-flex;
+  .w-reqs-list li {
+    display: flex;
     align-items: center;
-    gap: 6px;
-    font-size: 10px;
-    font-weight: 600;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin: 0 0 6px;
+    gap: 14px;
+    font-size: 16px;
+    color: var(--ink-2);
+    line-height: 1.4;
   }
-  .w-compare-redo-label::before {
-    content: ""; width: 14px; height: 14px; flex-shrink: 0;
+  .w-reqs-tick {
+    flex-shrink: 0;
+    width: 24px; height: 24px;
     border-radius: 50%;
     background: var(--accent);
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round' d='M5 12l4.5 4.5L19 7'/></svg>");
-    background-size: 10px;
+    background-size: 14px;
     background-repeat: no-repeat;
     background-position: center;
-  }
-  .w-compare-redo > p {
-    font-size: 14px;
-    color: var(--ink-2);
-    line-height: 1.5;
-    margin: 0;
-  }
-  @media (min-width: 720px) {
-    .w-compare-row {
-      grid-template-columns: 1.15fr 1fr;
-      gap: 40px;
-      align-items: center;
-      padding: 28px 0;
-    }
-  }
-
-  /* How it works — clean horizontal */
-  .w-how {
-    padding: 16px 20px 80px;
-    background: var(--bg-alt);
-  }
-  .w-how-wrap { padding-top: 64px; }
-  .w-steps {
-    list-style: none; padding: 0; margin: 0;
-    max-width: 920px;
-    margin-left: auto; margin-right: auto;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-  .w-step {
-    display: grid;
-    grid-template-columns: 40px 1fr;
-    gap: 14px;
-    align-items: start;
-  }
-  .w-step-num {
-    width: 32px; height: 32px;
-    border-radius: 50%;
-    background: var(--ink); color: #fff;
-    display: grid; place-items: center;
-    font-family: var(--font-serif), Georgia, serif;
-    font-size: 15px;
-    font-style: italic;
-    font-weight: 400;
-    margin-top: 4px;
-  }
-  .w-step h3 {
-    font-size: 16px; font-weight: 600;
-    margin: 0 0 4px;
-    color: var(--ink);
-    letter-spacing: -0.012em;
-  }
-  .w-step p {
-    font-size: 14px;
-    color: var(--ink-3);
-    margin: 0;
-    line-height: 1.5;
-  }
-  @media (min-width: 720px) {
-    .w-steps {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-    }
   }
 
   /* FAQ */
@@ -605,11 +510,10 @@
 
   <!-- HERO -->
   <section class="w-hero">
-    <span class="w-pill">Effective June 19, 2026</span>
-    <h1>Get EU-compliant in <em>10 minutes</em>. Free.</h1>
-    <p class="lead">A new EU directive requires every brand selling into the EU to offer a digital withdrawal option. Miss the deadline and you risk fines up to <strong>4% of annual turnover</strong>.</p>
-    <a href="https://app.redo.com/signup" class="btn btn-accent btn-lg">Get compliant now →</a>
-    <p class="w-hero-foot"><span>Free</span> with Redo Returns &nbsp;·&nbsp; <span>10-min</span> setup &nbsp;·&nbsp; <span>No</span> engineering</p>
+    <span class="w-pill">New EU law · June 19, 2026</span>
+    <h1>Don't get fined <em>4%</em> of your revenue.</h1>
+    <p class="lead">The EU now requires every brand selling into Europe to offer a digital withdrawal option. We turn it on for you in <strong>10 minutes</strong>. Free.</p>
+    <a href="https://app.redo.com/signup" class="btn btn-accent btn-lg">Get compliant →</a>
   </section>
 
   <!-- DEADLINE STRIP -->
@@ -637,122 +541,21 @@
     </div>
   </section>
 
-  <!-- COMPARISON: Requirement → Redo handles it -->
-  <section class="w-compare">
+  <!-- WHAT THE LAW REQUIRES — tight bulleted list -->
+  <section class="w-reqs">
     <div class="w-section-head">
-      <span class="kicker">The law vs. Redo</span>
-      <h2>Every requirement, <em>handled.</em></h2>
-      <p>The directive asks for six specific things. Redo handles every one of them automatically the moment you turn the flow on.</p>
+      <span class="kicker">What changes</span>
+      <h2>Six things you have to offer.</h2>
+      <p>Redo turns all six on automatically.</p>
     </div>
-    <div class="w-compare-list">
-
-      <div class="w-compare-row">
-        <div class="w-compare-law">
-          <p class="w-compare-num">01</p>
-          <h3>A dedicated digital withdrawal option</h3>
-          <p>Separate from your standard returns flow, findable in a few clicks.</p>
-        </div>
-        <div class="w-compare-redo">
-          <p class="w-compare-redo-label">Redo handles it</p>
-          <p>Creates a dedicated withdrawal URL with a guided two-step flow. Just add the link to your returns policy.</p>
-        </div>
-      </div>
-
-      <div class="w-compare-row">
-        <div class="w-compare-law">
-          <p class="w-compare-num">02</p>
-          <h3>14-day window from delivery</h3>
-          <p>Customers can cancel up to 14 days after delivery. Applies to fulfilled and unfulfilled orders.</p>
-        </div>
-        <div class="w-compare-redo">
-          <p class="w-compare-redo-label">Redo handles it</p>
-          <p>Calculates the window from each order's delivery date and applies it automatically across all EU shipments.</p>
-        </div>
-      </div>
-
-      <div class="w-compare-row">
-        <div class="w-compare-law">
-          <p class="w-compare-num">03</p>
-          <h3>Two-step confirmation + email</h3>
-          <p>Customers must acknowledge the withdrawal and receive an automatic confirmation email.</p>
-        </div>
-        <div class="w-compare-redo">
-          <p class="w-compare-redo-label">Redo handles it</p>
-          <p>The two-step confirmation and the receipt email are built in. No template work required.</p>
-        </div>
-      </div>
-
-      <div class="w-compare-row">
-        <div class="w-compare-law">
-          <p class="w-compare-num">04</p>
-          <h3>Refund within 14 days, original payment method</h3>
-          <p>Refunds must hit the original payment method, not store credit. Late refunds count as non-compliance.</p>
-        </div>
-        <div class="w-compare-redo">
-          <p class="w-compare-redo-label">Redo handles it</p>
-          <p>Auto-issues refunds to the original payment method via Shopify the moment a withdrawal is approved.</p>
-        </div>
-      </div>
-
-      <div class="w-compare-row">
-        <div class="w-compare-law">
-          <p class="w-compare-num">05</p>
-          <h3>Refund shipping, duties, and taxes</h3>
-          <p>Full outbound shipping cost plus any duties and taxes the customer paid have to be refunded.</p>
-        </div>
-        <div class="w-compare-redo">
-          <p class="w-compare-redo-label">Redo handles it</p>
-          <p>Cross-border DDP/DDU duty refund logic baked in, so the full amount goes back without manual calculation.</p>
-        </div>
-      </div>
-
-      <div class="w-compare-row">
-        <div class="w-compare-law">
-          <p class="w-compare-num">06</p>
-          <h3>No forced account creation</h3>
-          <p>Guest checkouts must be able to file a withdrawal without signing up first.</p>
-        </div>
-        <div class="w-compare-redo">
-          <p class="w-compare-redo-label">Redo handles it</p>
-          <p>Guest-friendly flow with email-only authentication. No password, no account, no friction.</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- HOW IT WORKS -->
-  <section class="w-how">
-    <div class="w-how-wrap">
-      <div class="w-section-head">
-        <span class="kicker">Setup</span>
-        <h2>Compliant in <em>three steps.</em></h2>
-        <p>The whole flow takes under ten minutes. No engineering, no developer time, no waiting on legal.</p>
-      </div>
-      <ol class="w-steps">
-        <li class="w-step">
-          <span class="w-step-num">1</span>
-          <div>
-            <h3>Connect your store</h3>
-            <p>One-click Shopify install. We pull in your orders and shipping config automatically.</p>
-          </div>
-        </li>
-        <li class="w-step">
-          <span class="w-step-num">2</span>
-          <div>
-            <h3>Enable the flow</h3>
-            <p>Toggle the EU withdrawal flow on in settings. Redo creates the URL, emails, and refund logic for you.</p>
-          </div>
-        </li>
-        <li class="w-step">
-          <span class="w-step-num">3</span>
-          <div>
-            <h3>You're compliant</h3>
-            <p>Drop the withdrawal link into your returns policy and you're covered for every EU order, forever.</p>
-          </div>
-        </li>
-      </ol>
-    </div>
+    <ul class="w-reqs-list">
+      <li><span class="w-reqs-tick"></span>A dedicated digital withdrawal flow</li>
+      <li><span class="w-reqs-tick"></span>14-day window from delivery</li>
+      <li><span class="w-reqs-tick"></span>Two-step confirmation with auto email</li>
+      <li><span class="w-reqs-tick"></span>Refund within 14 days to the original payment method</li>
+      <li><span class="w-reqs-tick"></span>Refund shipping, duties, and taxes</li>
+      <li><span class="w-reqs-tick"></span>No forced account creation for guests</li>
+    </ul>
   </section>
 
   <!-- FAQ -->
@@ -762,36 +565,20 @@
       <h2>Common questions.</h2>
     </div>
     <details>
-      <summary>What is the EU Right of Withdrawal?</summary>
-      <p>Directive (EU) 2023/2673 requires every ecommerce business selling to EU consumers to offer a clear, easily-found digital withdrawal option. Customers can withdraw any purchase within 14 days of delivery and get a full refund — including shipping, duties, and taxes.</p>
-    </details>
-    <details>
-      <summary>When does the law take effect?</summary>
-      <p><strong>June 19, 2026.</strong> After that date, any EU order processed without a compliant withdrawal option is a liability. There's no grace period.</p>
-    </details>
-    <details>
       <summary>Who has to comply?</summary>
-      <p>Any ecommerce merchant — anywhere in the world — that ships to an EU address. The rule applies based on the customer's location, not your company's. US, UK, Australia, anywhere — if you ship into the EU, you're in scope.</p>
+      <p>Any brand selling to an EU shipping address — regardless of where your company is based. Even one EU shipment triggers the requirement.</p>
     </details>
     <details>
-      <summary>What's the penalty for non-compliance?</summary>
-      <p>Up to <strong>4% of your annual turnover</strong> per the directive. Enforcement falls to each EU member state's consumer protection authority, so penalties vary by country — but the ceiling is the same everywhere.</p>
+      <summary>What happens if I don't comply by June 19?</summary>
+      <p>Up to <strong>4% of your annual turnover</strong> per the directive. Enforcement is by each EU member state's consumer authority. No grace period.</p>
     </details>
     <details>
       <summary>How is this different from regular returns?</summary>
-      <p>It's a stricter, separate flow with shorter deadlines, mandatory refund of shipping and duties, no return-condition requirements, and no restocking fees. Most existing returns portals don't meet all of these rules — which is why the law specifically requires a dedicated withdrawal option.</p>
-    </details>
-    <details>
-      <summary>Do I really have to refund shipping too?</summary>
-      <p>Yes. The full original outbound shipping cost must be refunded if the customer exercises their withdrawal right. Duties and taxes the customer paid are also refundable on cross-border orders.</p>
-    </details>
-    <details>
-      <summary>What if I only ship a small number of orders to the EU?</summary>
-      <p>Volume doesn't matter. Even one EU shipment triggers the requirement. Redo's flow auto-detects EU orders so you only pay attention to it when it actually applies.</p>
+      <p>It's a separate, stricter flow: 14-day window, mandatory refund of shipping and duties, no return-condition requirements, no restocking fees. Most returns portals don't meet all the new rules.</p>
     </details>
     <details>
       <summary>How can Redo offer this for free?</summary>
-      <p>The withdrawal flow comes bundled with Redo Returns at no extra cost. We're investing in compliance tooling because it makes our returns platform a no-brainer — most brands already need a modern returns solution, and this just makes the choice easier.</p>
+      <p>The withdrawal flow is bundled with Redo Returns at no extra cost. We invested in compliance tooling because it makes the returns platform a no-brainer for EU-facing brands.</p>
     </details>
   </section>
 
