@@ -732,6 +732,30 @@
   }
   .w-stat-text strong { color: var(--ink); font-weight: 600; }
 
+  /* Featured/solution card variant — dark inversion to make the answer card stand apart */
+  .w-q.is-featured {
+    background: var(--bg-dark);
+    border-color: var(--bg-dark);
+    color: rgba(255, 255, 255, 0.86);
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.16),
+      0 14px 32px -10px rgba(255, 68, 4, 0.22);
+  }
+  .w-q.is-featured .w-q-label { color: rgba(255, 255, 255, 0.55); }
+  .w-q.is-featured h2 {
+    color: #fff;
+    font-size: clamp(24px, 4.6vw, 30px);
+  }
+  .w-q.is-featured p,
+  .w-q.is-featured .w-states-list li { color: rgba(255, 255, 255, 0.78); }
+  .w-q.is-featured strong { color: #fff; font-weight: 600; }
+  .w-q.is-featured .w-states-list li { border-top-color: rgba(255, 255, 255, 0.09); }
+  .w-q.is-featured .w-cta-inline {
+    background: rgba(255, 255, 255, 0.06);
+  }
+  .w-q.is-featured .w-cta-inline p { color: rgba(255, 255, 255, 0.85); }
+  .w-q.is-featured .w-cta-inline strong { color: #fff; }
+
   /* States list — bold lead-in + body, hairline dividers, no checkmarks */
   .w-states-list {
     list-style: none;
@@ -1072,7 +1096,7 @@
         <p>And the 14-day refund clock can expire while a cross-border return is still in transit back to you, which is why most brands route EU returns through a regional center to stay inside the window.</p>
       </section>
 
-      <section class="w-q">
+      <section class="w-q is-featured">
         <p class="w-q-num"><span class="w-q-badge">05</span><span class="w-q-label">How Redo handles it</span></p>
         <h2>Automatically. For every EU order. Free with Redo Returns.</h2>
         <p>Redo runs the full compliant withdrawal flow end-to-end. EU shipping addresses trigger it; non-EU orders skip it. Our EU Return Center scans returns on arrival, so your 14-day refund clock starts the moment items are received, not when your team gets to them.</p>
