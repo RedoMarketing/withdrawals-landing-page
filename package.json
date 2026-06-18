@@ -1,0 +1,15 @@
+{
+  "name": "withdrawals-landing-page",
+  "version": "1.0.0",
+  "description": "Redo EU Right of Withdrawal landing page — lives at redo.com/withdrawals",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
