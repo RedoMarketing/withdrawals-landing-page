@@ -124,6 +124,56 @@
   }
   .m-hero .kicker { margin-bottom: 16px; }
 
+  /* Live countdown pill — replaces the rating block above the h1 */
+  .m-countdown {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 14px 7px 12px;
+    border-radius: 999px;
+    background: var(--bg-alt);
+    border: 1px solid var(--line);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-2);
+    margin: 0 0 24px;
+    letter-spacing: 0;
+  }
+  .m-countdown-dot {
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    box-shadow: 0 0 0 0 rgba(255, 68, 4, 0.6);
+    animation: m-countdown-pulse 2s ease-out infinite;
+  }
+  @keyframes m-countdown-pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(255, 68, 4, 0.55); }
+    70%  { box-shadow: 0 0 0 9px rgba(255, 68, 4, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 68, 4, 0); }
+  }
+  .m-countdown-text { white-space: nowrap; }
+  .m-countdown.is-live {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  .m-countdown.is-live .m-countdown-dot {
+    background: #fff;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.55);
+    animation-name: m-countdown-pulse-live;
+  }
+  @keyframes m-countdown-pulse-live {
+    0%   { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.55); }
+    70%  { box-shadow: 0 0 0 9px rgba(255, 255, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .m-countdown-dot { animation: none; box-shadow: 0 0 0 3px rgba(255, 68, 4, 0.18); }
+    .m-countdown.is-live .m-countdown-dot { box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.4); }
+  }
+
   /* Rating block — verbatim from shipping landing */
   .m-rating {
     display: inline-flex;
@@ -746,24 +796,9 @@
 <main>
 
   <section class="m-hero">
-    <div class="m-rating" role="img" aria-label="4.9 stars on Shopify, loved by 3,000 plus brands">
-      <div class="m-avatars" aria-hidden="true">
-        <img class="m-avatar" src="logos/founders/f1.png" alt="" loading="lazy" />
-        <img class="m-avatar" src="logos/founders/f3.png" alt="" loading="lazy" />
-        <img class="m-avatar" src="logos/founders/f2.png" alt="" loading="lazy" />
-        <img class="m-avatar" src="logos/founders/f6.png" alt="" loading="lazy" />
-        <img class="m-avatar" src="logos/founders/f5.png" alt="" loading="lazy" />
-      </div>
-      <div class="m-rating-stack">
-        <div class="m-rating-row">
-          <span class="m-rating-score">4.9</span>
-          <span class="m-rating-stars" aria-hidden="true">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          </span>
-          <span class="m-rating-score muted">on Shopify</span>
-        </div>
-        <span class="m-rating-sub">Loved by <strong>3,000+</strong> brands</span>
-      </div>
+    <div class="m-countdown" role="status" aria-live="polite">
+      <span class="m-countdown-dot" aria-hidden="true"></span>
+      <span class="m-countdown-text">Enforcement begins soon</span>
     </div>
     <h1>Don't get fined 4% of your revenue.</h1>
     <p class="lead">The EU now requires every brand selling into Europe to offer a digital withdrawal option. We turn it on for you in <strong>10 minutes</strong>. Free.</p>
@@ -884,6 +919,32 @@
   </div>
 </footer>
 
+<script>
+(function () {
+  var el = document.querySelector('.m-countdown');
+  if (!el) return;
+  var textEl = el.querySelector('.m-countdown-text');
+  // EU Right of Withdrawal Directive (EU) 2023/2673 takes effect on
+  // 2026-06-19. Use UTC midnight so the day-count is consistent
+  // regardless of the visitor's timezone.
+  var deadline = Date.UTC(2026, 5, 19); // month is 0-indexed; 5 = June
+  var now = Date.now();
+  var msPerDay = 24 * 60 * 60 * 1000;
+  var days = Math.ceil((deadline - now) / msPerDay);
+  var text;
+  if (days > 1) {
+    text = 'Enforcement begins in ' + days + ' days';
+  } else if (days === 1) {
+    text = 'Enforcement begins tomorrow';
+  } else if (days === 0) {
+    text = 'Enforcement begins today';
+  } else {
+    text = 'Enforcement is live · Are you compliant?';
+    el.classList.add('is-live');
+  }
+  textEl.textContent = text;
+})();
+</script>
 <script src="https://player.vimeo.com/api/player.js"></script>
 <script>
 (function () {
