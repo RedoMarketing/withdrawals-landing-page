@@ -15,111 +15,114 @@
 <meta name="twitter:description" content="EU Right of Withdrawal Directive takes effect June 19, 2026." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css?v=w-3" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css?v=w-4" />
 <style>
+  /* =========================================================
+     Programa-flavored Swiss design system
+     Monochrome canvas, 1px hairlines, sharp radii, no shadows.
+     Redo orange substitutes Programa's highlighter yellow as the
+     single chromatic "switched on" signal.
+     ========================================================= */
   :root {
-    --bg: #ffffff;
-    --bg-alt: hsl(0, 0%, 97.3%);
-    --ink: hsl(0, 0%, 9%);
-    --ink-2: hsl(0, 0%, 22%);
-    --ink-3: hsl(0, 0%, 43.5%);
-    --line: hsl(0, 0%, 93%);
-    --line-2: hsl(0, 0%, 95.1%);
+    --ink: #1a1a1a;
+    --paper: #ffffff;
+    --fog: #f4f4f4;
+    --ash: #a3a3a3;
     --accent: #ff4404;
-    --accent-deep: #e53d03;
-    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
-    --r-sm: 8px;
-    --r-md: 14px;
-    --r-lg: 20px;
+    --hairline: #e8e8e8;
+
+    --font-sans: 'Inter', 'Neue Haas Grotesk Text', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+    --r-btn: 10px;
+    --r-card: 16px;
   }
+
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
   body {
     font-family: var(--font-sans);
     color: var(--ink);
-    background: var(--bg);
+    background: var(--paper);
     -webkit-font-smoothing: antialiased;
-    line-height: 1.55;
+    line-height: 1.4;
     font-size: 16px;
+    font-weight: 400;
+    letter-spacing: -0.03em;
   }
   a { color: inherit; text-decoration: none; }
+  p { margin: 0; }
 
-  /* Buttons */
+  /* Buttons — stamped sticker: fill + 1px ink border + 10px radius */
   .btn,
   a.btn, a.btn:link, a.btn:visited {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
-    border: 1px solid transparent;
-    border-radius: 999px;
+    gap: 8px;
+    border: 1px solid var(--ink);
+    border-radius: var(--r-btn);
     font-family: inherit;
-    font-weight: 600;
+    font-weight: 500;
     text-decoration: none;
     cursor: pointer;
-    transition: background-color 0.15s ease, border-color 0.15s ease;
+    letter-spacing: -0.03em;
+    transition: filter 0.15s ease, background-color 0.15s ease;
     white-space: nowrap;
-    height: 48px;
-    padding: 0 24px;
-    font-size: 15px;
+    height: 42px;
+    padding: 0 18px;
+    font-size: 16px;
+    background: var(--paper);
+    color: var(--ink);
   }
-  .btn-sm, a.btn-sm  { height: 38px; padding: 0 16px; font-size: 13px; }
-  .btn-lg, a.btn-lg  { height: 56px; padding: 0 32px; font-size: 16px; }
+  .btn:hover { background: var(--fog); }
+  .btn-sm, a.btn-sm { height: 36px; padding: 0 14px; font-size: 14px; }
+  .btn-lg, a.btn-lg { height: 50px; padding: 0 22px; font-size: 17px; }
   .btn-primary,
   a.btn-primary, a.btn-primary:link, a.btn-primary:visited {
-    background: var(--ink); color: #fff; border-color: var(--ink);
+    background: var(--ink); color: var(--paper); border-color: var(--ink);
   }
-  .btn-primary:hover, a.btn-primary:hover { background: #000; color: #fff; }
+  .btn-primary:hover, a.btn-primary:hover { background: #000; }
   .btn-accent,
   a.btn-accent, a.btn-accent:link, a.btn-accent:visited {
-    background: var(--accent); color: #fff; border-color: var(--accent);
+    background: var(--accent); color: var(--paper); border-color: var(--ink);
   }
-  .btn-accent:hover, a.btn-accent:hover { background: var(--accent-deep); border-color: var(--accent-deep); }
+  .btn-accent:hover, a.btn-accent:hover { filter: brightness(0.94); }
 
-  /* =========================================================
-     PAGE
-     ========================================================= */
-  body.page-wd { background: var(--bg); }
-
-  /* Article container — everything sits inside a centered reading column */
+  /* Page shell */
+  body.page-wd { background: var(--paper); }
   .article {
     max-width: 720px;
     margin: 0 auto;
     padding: 0 24px;
   }
 
-  /* Nav */
+  /* Nav — white, no border-bottom */
   .w-nav {
     position: sticky; top: 0; z-index: 60;
-    background: rgba(255,255,255,0.9);
-    backdrop-filter: saturate(180%) blur(10px);
-    -webkit-backdrop-filter: saturate(180%) blur(10px);
-    border-bottom: 1px solid var(--line-2);
+    background: var(--paper);
   }
   .w-nav-inner {
-    height: 60px;
-    padding: 0 20px;
+    height: 64px;
+    padding: 0 24px;
     display: flex; align-items: center;
-    max-width: 1180px; margin: 0 auto;
+    max-width: 1200px; margin: 0 auto;
   }
   .w-nav .brand img { height: 20px; width: auto; display: block; }
   .w-nav-spacer { flex: 1; }
 
-  /* Video */
+  /* Video — 16px radius, no shadow */
   .w-video {
-    padding: 32px 20px 0;
-    background: var(--bg);
+    padding: 36px 24px 0;
   }
   .w-video-wrap {
     max-width: 720px;
     margin: 0 auto;
     position: relative;
     aspect-ratio: 16 / 9;
-    border-radius: var(--r-md);
+    border-radius: var(--r-card);
     overflow: hidden;
-    background: #000;
-    border: 1px solid var(--line-2);
+    background: var(--ink);
   }
   .w-video-wrap iframe {
     position: absolute; inset: 0;
@@ -127,243 +130,188 @@
   }
   @media (min-width: 720px) { .w-video { padding: 48px 32px 0; } }
 
-  /* Hero — document-style, minimal */
+  /* Hero */
   .w-hero {
-    padding: 48px 0 16px;
-  }
-  .w-hero-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 7px 14px 7px 12px;
-    border-radius: 999px;
-    background: var(--bg-alt);
-    border: 1px solid var(--line);
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--ink-2);
-    margin: 0 0 20px;
-    letter-spacing: 0;
-  }
-  .w-hero-eyebrow .dot {
-    display: inline-block;
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--accent);
-    flex-shrink: 0;
-    box-shadow: 0 0 0 3px rgba(255, 68, 4, 0.14);
+    padding: 48px 0 24px;
   }
   .w-hero h1 {
     font-family: var(--font-sans);
-    font-size: clamp(34px, 6vw, 48px);
-    line-height: 1.05;
-    letter-spacing: -0.028em;
-    font-weight: 600;
+    font-size: clamp(32px, 6vw, 42px);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    font-weight: 500;
     color: var(--ink);
-    margin: 0 0 18px;
+    margin: 0 0 24px;
   }
-  .w-hero h1 em {
-    font-family: 'Instrument Serif', Georgia, 'Times New Roman', serif;
-    font-style: italic;
-    font-weight: 400;
-    color: var(--accent);
-    letter-spacing: -0.01em;
+  .w-info-banner {
+    background: var(--fog);
+    border-radius: var(--r-card);
+    padding: 14px 18px;
+    margin: 0 0 24px;
+    font-size: 14px;
+    color: var(--ink);
+    letter-spacing: -0.03em;
   }
+  .w-info-banner strong { font-weight: 500; }
+  .w-info-banner .sep { color: var(--ash); margin: 0 10px; }
   .w-hero .lead {
     font-size: 17px;
-    line-height: 1.55;
-    color: var(--ink-3);
+    line-height: 1.4;
+    color: var(--ink);
     margin: 0 0 28px;
+    letter-spacing: -0.03em;
   }
-  .w-hero .lead strong { color: var(--ink); font-weight: 600; }
+  .w-hero .lead strong { font-weight: 500; }
   .w-hero .btn { min-width: 200px; }
   .w-hero-foot {
     margin: 14px 0 0;
-    font-size: 13px;
-    color: var(--ink-3);
+    font-size: 14px;
+    color: var(--ash);
+    letter-spacing: -0.03em;
   }
 
-  /* Numbered content sections — the reference page pattern */
+  /* Numbered sections — no borders, whitespace rhythm */
   .w-content {
     padding: 24px 0 0;
   }
   .w-q {
     padding: 36px 0;
-    border-top: 1px solid var(--line-2);
   }
-  .w-q:first-child { border-top: 0; }
+  .w-q:first-child { padding-top: 12px; }
   .w-q-num {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ash);
     margin: 0 0 14px;
+    letter-spacing: -0.03em;
   }
-  .w-q-badge {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 24px;
-    padding: 0 10px;
-    border-radius: 999px;
-    background: var(--accent);
-    color: #fff;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    line-height: 1;
-  }
-  .w-q-label {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--ink-2);
-    letter-spacing: 0;
-  }
+  .w-q-num .sep { margin: 0 8px; }
   .w-q h2 {
-    font-size: clamp(22px, 4vw, 28px);
+    font-family: var(--font-sans);
+    font-size: clamp(22px, 4vw, 26px);
     line-height: 1.2;
-    letter-spacing: -0.02em;
-    font-weight: 600;
+    letter-spacing: -0.03em;
+    font-weight: 500;
     color: var(--ink);
     margin: 0 0 14px;
   }
-  .w-q h2 em {
-    font-family: 'Instrument Serif', Georgia, 'Times New Roman', serif;
-    font-style: italic;
-    font-weight: 400;
-    color: var(--accent);
-    letter-spacing: -0.01em;
-  }
   .w-q p {
-    font-size: 16px;
-    line-height: 1.65;
-    color: var(--ink-2);
-    margin: 0 0 14px;
+    font-size: 17px;
+    line-height: 1.4;
+    color: var(--ink);
+    margin: 0 0 12px;
+    letter-spacing: -0.03em;
   }
   .w-q p:last-child { margin-bottom: 0; }
-  .w-q strong { color: var(--ink); font-weight: 600; }
+  .w-q strong { font-weight: 500; }
 
-  /* Inline list inside a numbered section */
+  /* Checklist — sits inside a fog card */
+  .w-checklist-card {
+    margin: 18px 0 0;
+    padding: 8px 24px;
+    background: var(--fog);
+    border-radius: var(--r-card);
+  }
   .w-q-list {
     list-style: none;
     padding: 0;
-    margin: 14px 0 0;
+    margin: 0;
   }
   .w-q-list li {
     position: relative;
-    padding: 8px 0 8px 26px;
+    padding: 12px 0 12px 22px;
     font-size: 16px;
-    line-height: 1.5;
-    color: var(--ink-2);
-    border-top: 1px solid var(--line-2);
+    line-height: 1.4;
+    color: var(--ink);
+    letter-spacing: -0.03em;
   }
-  .w-q-list li:first-child { border-top: 0; }
+  .w-q-list li + li {
+    border-top: 1px solid var(--hairline);
+  }
   .w-q-list li::before {
     content: "";
     position: absolute;
-    left: 0; top: 14px;
-    width: 14px; height: 14px;
-    border-radius: 50%;
-    background: var(--accent);
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='none' stroke='white' stroke-width='4' stroke-linecap='round' stroke-linejoin='round' d='M5 12l4.5 4.5L19 7'/></svg>");
-    background-size: 10px;
-    background-repeat: no-repeat;
-    background-position: center;
+    left: 0; top: 19px;
+    width: 12px; height: 1px;
+    background: var(--ink);
   }
 
-  /* Checklist card — wraps a w-q-list in a soft bg container */
-  .w-checklist-card {
-    margin: 18px 0 0;
-    padding: 6px 24px;
-    background: var(--bg-alt);
-    border-radius: var(--r-md);
-    border: 1px solid var(--line-2);
-  }
-  .w-checklist-card .w-q-list { margin: 0; }
-  .w-checklist-card .w-q-list li {
-    border-color: rgba(0,0,0,0.05);
-    padding: 12px 0 12px 28px;
-  }
-  .w-checklist-card .w-q-list li::before { top: 18px; }
-
-  /* Stat callout — big italic number + supporting text */
+  /* Stat callout — fog card, big number, no decoration */
   .w-stat-callout {
     display: flex;
+    gap: 24px;
     align-items: center;
-    gap: 22px;
     margin: 18px 0 0;
-    padding: 20px 26px;
-    background: linear-gradient(135deg, rgba(255,68,4,0.07) 0%, rgba(255,68,4,0.02) 100%);
-    border: 1px solid rgba(255,68,4,0.18);
-    border-radius: var(--r-md);
+    padding: 24px;
+    background: var(--fog);
+    border-radius: var(--r-card);
   }
   .w-stat-num {
-    font-family: 'Instrument Serif', Georgia, 'Times New Roman', serif;
-    font-style: italic;
-    font-weight: 400;
-    font-size: 68px;
-    line-height: 0.85;
-    color: var(--accent);
+    font-family: var(--font-sans);
+    font-size: clamp(52px, 11vw, 72px);
+    font-weight: 500;
+    line-height: 0.9;
+    color: var(--ink);
     flex-shrink: 0;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
   }
   .w-stat-text {
-    font-size: 14px;
-    line-height: 1.5;
-    color: var(--ink-2);
+    font-size: 15px;
+    line-height: 1.4;
+    color: var(--ink);
+    letter-spacing: -0.03em;
   }
-  .w-stat-text strong { color: var(--ink); font-weight: 600; }
+  .w-stat-text strong { font-weight: 500; }
 
-  /* CTA inline — minimal, no dark slab */
+  /* Inline CTA — fog card, action on right */
   .w-cta-inline {
-    margin: 24px 0 0;
-    padding: 24px 28px;
-    background: var(--bg-alt);
-    border-radius: var(--r-md);
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 16px;
     align-items: flex-start;
+    margin: 18px 0 0;
+    padding: 24px;
+    background: var(--fog);
+    border-radius: var(--r-card);
   }
   .w-cta-inline p {
     margin: 0;
-    font-size: 15px;
-    color: var(--ink-2);
-    line-height: 1.5;
+    font-size: 16px;
+    line-height: 1.4;
+    color: var(--ink);
+    letter-spacing: -0.03em;
   }
-  .w-cta-inline strong { color: var(--ink); font-weight: 600; }
+  .w-cta-inline strong { font-weight: 500; }
   .w-cta-inline .btn { min-width: 200px; }
   @media (min-width: 600px) {
     .w-cta-inline {
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
-      padding: 22px 28px;
     }
     .w-cta-inline p { flex: 1; }
   }
 
   /* Disclaimer */
   .w-disclaimer {
-    padding: 24px 0 64px;
+    padding: 48px 0 72px;
   }
   .w-disclaimer p {
-    font-size: 13px;
-    color: var(--ink-3);
-    line-height: 1.6;
+    font-size: 14px;
+    color: var(--ash);
+    line-height: 1.4;
     margin: 0;
-    padding-left: 16px;
-    border-left: 2px solid var(--line);
+    letter-spacing: -0.03em;
   }
-  .w-disclaimer strong { color: var(--ink-2); }
+  .w-disclaimer strong { color: var(--ink); font-weight: 500; }
 
-  /* Footer — slim, single line on desktop */
+  /* Footer — fog bg differentiates without a border */
   .w-footer {
-    background: var(--bg);
-    border-top: 1px solid var(--line-2);
-    padding: 28px 24px;
+    background: var(--fog);
+    padding: 36px 24px;
   }
   .w-footer-inner {
-    max-width: 1180px;
+    max-width: 1200px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -375,24 +323,26 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 8px 20px;
-    font-size: 13px;
+    gap: 8px 24px;
+    font-size: 14px;
   }
   .w-footer-links a {
-    color: var(--ink-3);
+    color: var(--ink);
     text-decoration: none;
+    letter-spacing: -0.03em;
   }
-  .w-footer-links a:hover { color: var(--ink); }
+  .w-footer-links a:hover { color: var(--ash); }
   .w-footer-bottom {
-    font-size: 12px;
-    color: var(--ink-3);
+    font-size: 14px;
+    color: var(--ash);
     text-align: center;
+    letter-spacing: -0.03em;
   }
   @media (min-width: 720px) {
     .w-footer-inner {
       flex-direction: row;
       justify-content: space-between;
-      gap: 16px;
+      gap: 24px;
     }
   }
 </style>
@@ -405,18 +355,17 @@
       <img src="logos/redo-logo.svg" alt="Redo" />
     </a>
     <span class="w-nav-spacer"></span>
-    <a href="https://app.redo.com/signup" class="btn btn-primary btn-sm">Get compliant</a>
+    <a href="https://app.redo.com/signup" class="btn btn-accent btn-sm">Get compliant</a>
   </div>
 </header>
 
 <main>
 
-  <!-- Video -->
   <section class="w-video">
     <div class="w-video-wrap">
       <iframe
         src="https://player.vimeo.com/video/1202351057?autoplay=1&muted=1&playsinline=1&title=0&byline=0&portrait=0"
-        title="EU Right of Withdrawal — what every brand needs to know"
+        title="EU Right of Withdrawal: what every brand needs to know"
         allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
         allowfullscreen
         frameborder="0"></iframe>
@@ -425,32 +374,32 @@
 
   <article class="article">
 
-    <!-- Hero -->
     <section class="w-hero">
-      <p class="w-hero-eyebrow"><span class="dot"></span>EU Right of Withdrawal · Effective June 19, 2026</p>
       <h1>Don't get fined 4% of your revenue.</h1>
+      <div class="w-info-banner">
+        <strong>Effective:</strong> June 19, 2026<span class="sep">·</span><strong>Directive:</strong> (EU) 2023/2673
+      </div>
       <p class="lead">The EU now requires every brand selling into Europe to offer a digital withdrawal option. We turn it on for you in <strong>10 minutes</strong>. Free.</p>
-      <a href="https://app.redo.com/signup" class="btn btn-accent btn-lg">Get compliant →</a>
+      <a href="https://app.redo.com/signup" class="btn btn-accent btn-lg">Get compliant</a>
       <p class="w-hero-foot">Free with Redo Returns · No engineering needed</p>
     </section>
 
-    <!-- Numbered content -->
     <div class="w-content">
 
       <section class="w-q">
-        <p class="w-q-num"><span class="w-q-badge">01</span><span class="w-q-label">What it is</span></p>
+        <p class="w-q-num">01<span class="sep">·</span>What it is</p>
         <h2>A new EU directive that's mandatory on June 19, 2026.</h2>
         <p>Directive (EU) 2023/2673, the Right of Withdrawal, requires every ecommerce business selling into the EU to offer a clear, easily-found digital withdrawal option. It's separate from your normal returns flow and the rules are stricter.</p>
       </section>
 
       <section class="w-q">
-        <p class="w-q-num"><span class="w-q-badge">02</span><span class="w-q-label">Who it affects</span></p>
+        <p class="w-q-num">02<span class="sep">·</span>Who it affects</p>
         <h2>Any brand that ships to an EU address.</h2>
         <p>It applies based on the customer's location, not where your company is based. US, UK, Australia, anywhere. If you ship into the EU, you're in scope. Even one EU shipment triggers it.</p>
       </section>
 
       <section class="w-q">
-        <p class="w-q-num"><span class="w-q-badge">03</span><span class="w-q-label">What it requires</span></p>
+        <p class="w-q-num">03<span class="sep">·</span>What it requires</p>
         <h2>Six specific things, all mandatory.</h2>
         <div class="w-checklist-card">
           <ul class="w-q-list">
@@ -465,8 +414,8 @@
       </section>
 
       <section class="w-q">
-        <p class="w-q-num"><span class="w-q-badge">04</span><span class="w-q-label">The penalty</span></p>
-        <h2>Up to <em>4%</em> of your annual turnover.</h2>
+        <p class="w-q-num">04<span class="sep">·</span>The penalty</p>
+        <h2>Up to 4% of your annual turnover.</h2>
         <p>Enforcement is by each EU member state's consumer protection authority. Penalties vary by country, but the ceiling stays the same everywhere.</p>
         <div class="w-stat-callout">
           <div class="w-stat-num">4%</div>
@@ -475,18 +424,17 @@
       </section>
 
       <section class="w-q">
-        <p class="w-q-num"><span class="w-q-badge">05</span><span class="w-q-label">How Redo handles it</span></p>
+        <p class="w-q-num">05<span class="sep">·</span>How Redo handles it</p>
         <h2>Automatically. For every EU order. Free.</h2>
         <p>Redo auto-detects EU shipments, enforces the 14-day window, generates the prepaid return labels, processes refunds through Shopify (including shipping, duties, and taxes), and keeps the whole flow separate from your regular returns. You install Redo, toggle on the EU withdrawal flow, and you're compliant.</p>
         <div class="w-cta-inline">
           <p><strong>Compliant in under 10 minutes.</strong> No engineering, no developer time, no waiting on legal.</p>
-          <a href="https://app.redo.com/signup" class="btn btn-accent">Get compliant →</a>
+          <a href="https://app.redo.com/signup" class="btn btn-accent">Get compliant</a>
         </div>
       </section>
 
     </div>
 
-    <!-- Disclaimer -->
     <section class="w-disclaimer">
       <p><strong>This page is informational, not legal advice.</strong> Compliance with Directive (EU) 2023/2673 is your responsibility as a merchant. Redo's tooling helps you meet the technical and operational requirements, but specific obligations vary by EU member state. Consult qualified legal counsel in your target markets to confirm your full compliance posture.</p>
     </section>
