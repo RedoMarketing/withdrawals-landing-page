@@ -65,7 +65,12 @@
     color: var(--accent);
     letter-spacing: 0;
   }
-  .btn {
+  /* Use a.btn selectors so specificity beats the user-agent's a:link rule
+     in older renderers (preview panes, srcdoc iframes, email clients). */
+  .btn,
+  a.btn,
+  a.btn:link,
+  a.btn:visited {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -82,20 +87,26 @@
     padding: 0 20px;
     font-size: 14px;
   }
-  .btn-sm  { height: 40px; padding: 0 16px; font-size: 13px; }
-  .btn-lg  { height: 56px; padding: 0 28px; font-size: 16px; }
-  .btn-primary {
+  .btn-sm, a.btn-sm  { height: 40px; padding: 0 16px; font-size: 13px; }
+  .btn-lg, a.btn-lg  { height: 56px; padding: 0 28px; font-size: 16px; }
+  .btn-primary,
+  a.btn-primary,
+  a.btn-primary:link,
+  a.btn-primary:visited {
     background: var(--ink);
     color: #fff;
     border-color: var(--ink);
   }
-  .btn-primary:hover { background: #000; }
-  .btn-secondary {
+  .btn-primary:hover, a.btn-primary:hover { background: #000; color: #fff; }
+  .btn-secondary,
+  a.btn-secondary,
+  a.btn-secondary:link,
+  a.btn-secondary:visited {
     background: transparent;
     color: var(--ink);
     border-color: var(--line);
   }
-  .btn-secondary:hover { background: var(--gray-2); border-color: var(--gray-6); }
+  .btn-secondary:hover, a.btn-secondary:hover { background: var(--gray-2); border-color: var(--gray-6); }
 
   body.page-wd { background: var(--bg); }
 
