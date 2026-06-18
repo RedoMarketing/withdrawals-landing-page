@@ -218,14 +218,18 @@
     background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='none' stroke='%23ff4404' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' d='M5 12l4.5 4.5L19 7'/></svg>") center / 12px no-repeat;
   }
 
-  /* Video sits in its own section, just under the hero */
+  /* Video sits in its own full-bleed light-gray section, just under the hero */
   .m-video-section {
-    padding: 16px 20px 40px;
-    text-align: center;
-    max-width: 1020px;
-    margin: 0 auto;
+    background: var(--bg-alt);
+    padding: 48px 20px 56px;
+    margin: 24px 0 0;
     position: relative;
     z-index: 1;
+  }
+  .m-video-section-inner {
+    max-width: 1020px;
+    margin: 0 auto;
+    text-align: center;
   }
   .m-video-section-kicker {
     display: inline-block;
@@ -234,13 +238,13 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--ink-3);
-    margin: 0 0 16px;
+    margin: 0 0 18px;
   }
   @media (min-width: 720px) {
-    .m-video-section { padding: 24px 32px 48px; }
+    .m-video-section { padding: 56px 32px 64px; margin-top: 32px; }
   }
   @media (min-width: 1024px) {
-    .m-video-section { padding: 32px 40px 64px; }
+    .m-video-section { padding: 64px 40px 80px; margin-top: 40px; }
   }
 
   /* Legacy m-hero-art wrapper (kept for fallback compatibility) */
@@ -716,6 +720,7 @@
   </section>
 
   <section class="m-video-section">
+    <div class="m-video-section-inner">
     <p class="m-video-section-kicker">Learn more</p>
     <div class="m-hero-video" data-paused="false">
       <iframe
@@ -742,6 +747,7 @@
           <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
         </svg>
       </button>
+    </div>
     </div>
   </section>
 
@@ -843,18 +849,34 @@
     clickBtn.setAttribute('aria-label', paused ? 'Play video' : 'Pause video');
   }
 
-  // Fire mute/pause toggles SYNCHRONOUSLY inside the click handler so the
-  // browser still considers it a user gesture (otherwise autoplay-muted
-  // policies will reject the first unmute).
+  // Fire toggles SYNCHRONOUSLY inside the click handler so the browser
+  // still treats it as a user gesture. Also: when unmuting, force
+  // setVolume(1) because Vimeo's muted=1 URL param can leave the
+  // player at volume 0 even after setMuted(false), producing silence.
+  function unmuteHard() {
+    player.setMuted(false).catch(function () {});
+    player.setVolume(1).catch(function () {});
+    player.play().catch(function () {});
+  }
+
   muteBtn.addEventListener('click', function (e) {
     e.stopPropagation();
     var wasMuted = muteBtn.dataset.muted === 'true';
-    player.setMuted(!wasMuted).catch(function () {});
+    if (wasMuted) unmuteHard();
+    else player.setMuted(true).catch(function () {});
   });
+
   clickBtn.addEventListener('click', function () {
     var isPaused = videoBox.dataset.paused === 'true';
-    if (isPaused) player.play().catch(function () {});
-    else player.pause().catch(function () {});
+    var isMuted = muteBtn.dataset.muted === 'true';
+    if (isPaused) {
+      // Treat a "play" click as the moment to also enable sound,
+      // since the user is engaging with the video.
+      if (isMuted) unmuteHard();
+      else player.play().catch(function () {});
+    } else {
+      player.pause().catch(function () {});
+    }
   });
 
   // Sync our UI from the player's actual state.
