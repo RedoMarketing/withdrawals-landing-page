@@ -757,6 +757,26 @@
   .w-q.is-featured .w-cta-inline p { color: rgba(255, 255, 255, 0.85); }
   .w-q.is-featured .w-cta-inline strong { color: #fff; }
 
+  /* Mini secondary link inside a card (white fill, ink stroke pill) */
+  .w-q-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 18px;
+    padding: 0 14px;
+    height: 32px;
+    border-radius: 999px;
+    background: #fff;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: -0.005em;
+    transition: background-color 0.15s ease;
+  }
+  .w-q-action:hover { background: var(--bg-alt); }
+
   /* States list — bold lead-in + body, hairline dividers, no checkmarks */
   .w-states-list {
     list-style: none;
@@ -1066,6 +1086,7 @@
         <p class="w-q-num"><span class="w-q-badge">01</span><span class="w-q-label">What it is</span></p>
         <h2>A new EU directive that's mandatory on June 19, 2026.</h2>
         <p>Directive (EU) 2023/2673 amends the Consumer Rights Directive. If a shopper can buy from you in a few clicks, they have to be able to withdraw in a few clicks, with a full refund that covers shipping, duties, and taxes. It's separate from your normal returns flow and the rules are stricter.</p>
+        <a href="https://eur-lex.europa.eu/eli/dir/2023/2673/oj" target="_blank" rel="noopener noreferrer" class="w-q-action">View the law →</a>
       </section>
 
       <section class="w-q">
