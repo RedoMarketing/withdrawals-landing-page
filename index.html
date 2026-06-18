@@ -732,6 +732,31 @@
   }
   .w-stat-text strong { color: var(--ink); font-weight: 600; }
 
+  /* States list — bold lead-in + body, hairline dividers, no checkmarks */
+  .w-states-list {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0 0;
+  }
+  .w-states-list li {
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    padding: 12px 0;
+    border-top: 1px solid var(--line-2);
+  }
+  .w-states-list li:first-child {
+    border-top: 0;
+    padding-top: 4px;
+  }
+  .w-states-list li:last-child {
+    padding-bottom: 0;
+  }
+  .w-states-list strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
   /* CTA inline — sits inside a white parent card, so use bg-alt to invert */
   .w-cta-inline {
     margin: 20px 0 0;
@@ -1015,26 +1040,27 @@
       <section class="w-q">
         <p class="w-q-num"><span class="w-q-badge">01</span><span class="w-q-label">What it is</span></p>
         <h2>A new EU directive that's mandatory on June 19, 2026.</h2>
-        <p>Directive (EU) 2023/2673, the Right of Withdrawal, requires every ecommerce business selling into the EU to offer a clear, easily-found digital withdrawal option. It's separate from your normal returns flow and the rules are stricter.</p>
+        <p>Directive (EU) 2023/2673 amends the Consumer Rights Directive. If a shopper can buy from you in a few clicks, they have to be able to withdraw in a few clicks, with a full refund that covers shipping, duties, and taxes. It's separate from your normal returns flow and the rules are stricter.</p>
       </section>
 
       <section class="w-q">
         <p class="w-q-num"><span class="w-q-badge">02</span><span class="w-q-label">Who it affects</span></p>
         <h2>Any brand that ships to an EU address.</h2>
-        <p>It applies based on the customer's location, not where your company is based. US, UK, Australia, anywhere. If you ship into the EU, you're in scope. Even one EU shipment triggers it.</p>
+        <p>Scope is based on the customer's delivery address, not where your company is based. US, UK, Australia, anywhere. If you ship into the EU, you're in scope. Even a single EU shipment triggers it; orders shipping anywhere else are outside the directive.</p>
       </section>
 
       <section class="w-q">
         <p class="w-q-num"><span class="w-q-badge">03</span><span class="w-q-label">What it requires</span></p>
-        <h2>Six specific things, all mandatory.</h2>
+        <h2>Six rules covering the flow and the refund.</h2>
+        <p>The directive defines specific requirements for both the withdrawal flow itself and the refund. Miss any of them and you're not compliant.</p>
         <div class="w-checklist-card">
           <ul class="w-q-list">
-            <li>A dedicated digital withdrawal flow, separate from regular returns</li>
-            <li>14-day withdrawal window from the delivery date</li>
-            <li>Two-step confirmation with an automatic email</li>
-            <li>Refund within 14 days to the original payment method</li>
-            <li>Refund shipping, duties, and taxes, not just the product</li>
-            <li>No forced account creation for guest checkouts</li>
+            <li>A dedicated digital withdrawal flow. Email submissions don't count.</li>
+            <li>Easy to find. It can't be buried in a returns FAQ or account settings.</li>
+            <li>No forced account creation. Order lookup is permitted.</li>
+            <li>Two-step submission with an automatic email acknowledgement.</li>
+            <li>Refund standard shipping, duties (if you collected them at checkout), and taxes. Not just the product.</li>
+            <li>14 days for the shopper to submit, then 14 days from submission to refund.</li>
           </ul>
         </div>
       </section>
@@ -1043,12 +1069,19 @@
         <p class="w-q-num"><span class="w-q-badge">04</span><span class="w-q-label">The penalty</span></p>
         <h2>Up to 4% of your annual turnover.</h2>
         <p>Enforcement is by each EU member state's consumer protection authority. Penalties vary by country, but the ceiling stays the same everywhere. There's no warning period and no grace window after June 19, 2026.</p>
+        <p>And the 14-day refund clock can expire while a cross-border return is still in transit back to you, which is why most brands route EU returns through a regional center to stay inside the window.</p>
       </section>
 
       <section class="w-q">
         <p class="w-q-num"><span class="w-q-badge">05</span><span class="w-q-label">How Redo handles it</span></p>
-        <h2>Automatically. For every EU order. Free.</h2>
-        <p>Redo auto-detects EU shipments, enforces the 14-day window, generates the prepaid return labels, processes refunds through Shopify (including shipping, duties, and taxes), and keeps the whole flow separate from your regular returns. You install Redo, toggle on the EU withdrawal flow, and you're compliant.</p>
+        <h2>Automatically. For every EU order. Free with Redo Returns.</h2>
+        <p>Redo runs the full compliant withdrawal flow end-to-end. EU shipping addresses trigger it; non-EU orders skip it. Our EU Return Center scans returns on arrival, so your 14-day refund clock starts the moment items are received, not when your team gets to them.</p>
+        <p>The behavior adapts to where each order sits in fulfillment:</p>
+        <ul class="w-states-list">
+          <li><strong>Unfulfilled.</strong> The whole order cancels automatically. No return label needed.</li>
+          <li><strong>Fully fulfilled.</strong> The shopper picks items to return and gets a prepaid label. Refund routes through Shopify.</li>
+          <li><strong>Partially fulfilled.</strong> Flagged for your team to resolve in the dashboard, since split fulfillments need a human call.</li>
+        </ul>
         <div class="w-cta-inline">
           <p><strong>Compliant in under 10 minutes.</strong> No engineering, no developer time, no waiting on legal.</p>
           <a href="https://app.redo.com/signup" class="btn btn-accent">Get compliant →</a>
