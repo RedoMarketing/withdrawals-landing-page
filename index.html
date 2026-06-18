@@ -567,10 +567,13 @@
   /* Card pattern — intro + numbered sections all sit in their own card */
   .w-intro,
   .w-q {
-    background: var(--bg-alt);
-    border-radius: 20px;
-    padding: 28px;
-    border: 0;
+    background: #fff;
+    border-radius: 22px;
+    padding: 32px 28px;
+    border: 1px solid var(--line-2);
+    box-shadow:
+      0 1px 2px rgba(20, 20, 19, 0.04),
+      0 6px 18px -6px rgba(20, 20, 19, 0.08);
   }
   .w-intro { margin: 24px 0 16px; }
   .w-intro h2 {
@@ -634,12 +637,15 @@
     text-transform: none;
   }
   .w-q h2 {
-    font-size: clamp(22px, 4vw, 28px);
-    line-height: 1.2;
+    font-family: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: clamp(28px, 5.5vw, 36px);
+    line-height: 1.08;
     letter-spacing: -0.02em;
-    font-weight: 600;
     color: var(--ink);
     margin: 0 0 14px;
+    text-wrap: balance;
   }
   .w-q h2 em {
     font-family: 'Instrument Serif', Georgia, 'Times New Roman', serif;
@@ -728,11 +734,11 @@
   }
   .w-stat-text strong { color: var(--ink); font-weight: 600; }
 
-  /* CTA inline — white card inverted inside the gray parent card */
+  /* CTA inline — sits inside a white parent card, so use bg-alt to invert */
   .w-cta-inline {
     margin: 20px 0 0;
     padding: 20px 22px;
-    background: #fff;
+    background: var(--bg-alt);
     border-radius: 14px;
     display: flex;
     flex-direction: column;
