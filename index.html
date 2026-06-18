@@ -18,6 +18,85 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css?v=w-1" />
 <style>
+  /* =========================================================
+     Inlined core tokens + button styles so this page renders
+     in any environment (preview pane, srcdoc iframe, etc.)
+     even when the external styles.css doesn't load.
+     ========================================================= */
+  :root {
+    --gray-0: hsl(0, 0%, 100%);
+    --gray-2: hsl(0, 0%, 97.3%);
+    --gray-3: hsl(0, 0%, 95.1%);
+    --gray-4: hsl(0, 0%, 93%);
+    --gray-6: hsl(0, 0%, 88.7%);
+    --gray-9: hsl(0, 0%, 56.1%);
+    --gray-11: hsl(0, 0%, 43.5%);
+    --gray-12: hsl(0, 0%, 9%);
+    --bg: var(--gray-0);
+    --bg-alt: var(--gray-2);
+    --bg-dark: #0a0a0a;
+    --ink: var(--gray-12);
+    --ink-2: hsl(0, 0%, 22%);
+    --ink-3: var(--gray-11);
+    --line: var(--gray-4);
+    --line-2: var(--gray-3);
+    --accent: #ff4404;
+    --accent-deep: #e53d03;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    --font-serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+    --r-sm: 8px;
+    --r-md: 14px;
+    --r-lg: 22px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-sans);
+    color: var(--ink);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+  a { color: inherit; text-decoration: none; }
+  .kicker {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    font-family: inherit;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    white-space: nowrap;
+    height: 44px;
+    padding: 0 20px;
+    font-size: 14px;
+  }
+  .btn-sm  { height: 40px; padding: 0 16px; font-size: 13px; }
+  .btn-lg  { height: 56px; padding: 0 28px; font-size: 16px; }
+  .btn-primary {
+    background: var(--ink);
+    color: #fff;
+    border-color: var(--ink);
+  }
+  .btn-primary:hover { background: #000; }
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    border-color: var(--line);
+  }
+  .btn-secondary:hover { background: var(--gray-2); border-color: var(--gray-6); }
+
   body.page-wd { background: var(--bg); }
 
   /* ===== Nav ===== */
