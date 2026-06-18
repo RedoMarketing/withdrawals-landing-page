@@ -563,6 +563,29 @@
     color: var(--ink-3);
   }
 
+  /* Intro / overview paragraph — sits above the numbered sections */
+  .w-intro {
+    padding: 48px 0 12px;
+    border-bottom: 1px solid var(--line-2);
+  }
+  .w-intro h2 {
+    font-family: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: clamp(28px, 5vw, 38px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+  .w-intro p {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--ink-2);
+    margin: 0 0 36px;
+  }
+
   /* Numbered content sections — the reference page pattern */
   .w-content {
     padding: 24px 0 0;
@@ -574,29 +597,30 @@
   .w-q:first-child { border-top: 0; }
   .w-q-num {
     display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 0 0 14px;
+    align-items: baseline;
+    gap: 14px;
+    margin: 0 0 12px;
   }
   .w-q-badge {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 24px;
-    padding: 0 10px;
-    border-radius: 999px;
-    background: var(--accent);
-    color: #fff;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
+    font-family: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 34px;
     line-height: 1;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+    background: none;
+    padding: 0;
+    height: auto;
+    border-radius: 0;
+    display: inline-block;
   }
   .w-q-label {
-    font-size: 13px;
+    font-size: 11px;
     font-weight: 600;
-    color: var(--ink-2);
-    letter-spacing: 0;
+    color: var(--ink-3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
   }
   .w-q h2 {
     font-size: clamp(22px, 4vw, 28px);
@@ -969,6 +993,11 @@
   </section>
 
   <article class="article">
+
+    <section class="w-intro">
+      <h2>The EU right of withdrawal, explained.</h2>
+      <p>Starting June 19, 2026, any business selling to EU consumers must offer a clear, digital way to withdraw from a purchase. If a shopper can buy in a few clicks, they must be able to withdraw in a few clicks, for a full refund, including shipping, duties, and taxes. Enforcement is expected, with stated penalties of up to 4% of annual turnover, so every brand selling to EU consumers needs a compliant withdrawal flow live before this date.</p>
+    </section>
 
     <!-- Numbered content -->
     <div class="w-content">
