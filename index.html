@@ -564,37 +564,43 @@
   }
 
   /* Intro / overview paragraph — sits above the numbered sections */
-  .w-intro {
-    padding: 48px 0 12px;
-    border-bottom: 1px solid var(--line-2);
+  /* Card pattern — intro + numbered sections all sit in their own card */
+  .w-intro,
+  .w-q {
+    background: var(--bg-alt);
+    border-radius: 20px;
+    padding: 28px;
+    border: 0;
   }
+  .w-intro { margin: 24px 0 16px; }
   .w-intro h2 {
     font-family: 'Instrument Serif', Georgia, 'Times New Roman', serif;
     font-style: normal;
     font-weight: 400;
-    font-size: clamp(28px, 5vw, 38px);
+    font-size: clamp(26px, 5vw, 34px);
     line-height: 1.1;
     letter-spacing: -0.02em;
     color: var(--ink);
-    margin: 0 0 18px;
+    margin: 0 0 14px;
     text-wrap: balance;
   }
   .w-intro p {
-    font-size: 17px;
+    font-size: 16px;
     line-height: 1.65;
     color: var(--ink-2);
-    margin: 0 0 36px;
+    margin: 0;
   }
 
-  /* Numbered content sections — the reference page pattern */
+  /* Numbered content sections — stacked cards with a small gap */
   .w-content {
-    padding: 24px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
-  .w-q {
-    padding: 36px 0;
-    border-top: 1px solid var(--line-2);
+  @media (min-width: 720px) {
+    .w-intro, .w-q { padding: 36px; }
   }
-  .w-q:first-child { border-top: 0; }
   .w-q-num {
     display: flex;
     align-items: baseline;
@@ -674,31 +680,31 @@
     background-position: center;
   }
 
-  /* Checklist card — wraps a w-q-list in a soft bg container */
+  /* Checklist — sits inside the parent .w-q card, no nested bg */
   .w-checklist-card {
-    margin: 18px 0 0;
-    padding: 6px 24px;
-    background: var(--bg-alt);
-    border-radius: var(--r-md);
-    border: 1px solid var(--line-2);
+    margin: 16px 0 0;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
   }
   .w-checklist-card .w-q-list { margin: 0; }
   .w-checklist-card .w-q-list li {
-    border-color: rgba(0,0,0,0.05);
-    padding: 12px 0 12px 28px;
+    border-color: rgba(0,0,0,0.06);
+    padding: 11px 0 11px 28px;
   }
-  .w-checklist-card .w-q-list li::before { top: 18px; }
+  .w-checklist-card .w-q-list li::before { top: 16px; }
 
-  /* Stat callout — big italic number + supporting text */
+  /* Stat callout — big number + supporting text, no extra frame */
   .w-stat-callout {
     display: flex;
     align-items: center;
-    gap: 22px;
+    gap: 20px;
     margin: 18px 0 0;
-    padding: 20px 26px;
-    background: linear-gradient(135deg, rgba(255,68,4,0.07) 0%, rgba(255,68,4,0.02) 100%);
-    border: 1px solid rgba(255,68,4,0.18);
-    border-radius: var(--r-md);
+    padding: 0;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
   }
   .w-stat-num {
     font-family: 'Instrument Serif', Georgia, 'Times New Roman', serif;
@@ -717,12 +723,12 @@
   }
   .w-stat-text strong { color: var(--ink); font-weight: 600; }
 
-  /* CTA inline — minimal, no dark slab */
+  /* CTA inline — white card inverted inside the gray parent card */
   .w-cta-inline {
-    margin: 24px 0 0;
-    padding: 24px 28px;
-    background: var(--bg-alt);
-    border-radius: var(--r-md);
+    margin: 20px 0 0;
+    padding: 20px 22px;
+    background: #fff;
+    border-radius: 14px;
     display: flex;
     flex-direction: column;
     gap: 14px;
